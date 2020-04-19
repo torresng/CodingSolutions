@@ -15,6 +15,12 @@ class Solution {
         return dp(0, 0, s, p);
     }
 
+    // 状态转移：
+    // 1. p[j]是正常字符，f[i][j] = s[i] == p[j] && f[i + 1][j + 1];
+    // 2. p[j]是'.'，f[i][j] = f[i + 1][j + 1]
+    // 3. p[j + 1]是'*'，f[i][j] = f[i][j + 2] || f[i + 1][j]
+    //
+    // f[n][m] = true
     bool dp(int x, int y, string &s, string &p) {
         if (f[x][y] != -1) {
             return f[x][y];
